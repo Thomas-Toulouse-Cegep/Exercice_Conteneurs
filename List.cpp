@@ -65,7 +65,7 @@ std::string List::RemoveFromEnd()
 
 bool List::IsEmpty()
 {
-	return start == nullptr;
+	return start == nullptr || end == nullptr;
 }
 bool List::IsEmptyend()
 {

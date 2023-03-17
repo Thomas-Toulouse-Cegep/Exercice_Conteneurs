@@ -89,10 +89,8 @@ void RunList() {
 	std::cout << "\tExit\n";
 #pragma warning(suppress : 92).
 	while (true) {
-		
-		
 		std::cin >> userInput;
-		if (userInput == "Exit" )
+		if (userInput == "Exit")
 			break;
 
 		list1.Add(userInput);
@@ -103,11 +101,12 @@ void RunList() {
 
 	while (!list1.IsEmpty())
 		std::cout << list1.RemoveFromStart();
-	std::cout << "\n";
+	//std::cout << "\n";
 
 	std::cout << "\n******************\nVoici le resultat de la fin!\n******************\n";
 
 	while (!list2.IsEmpty())
-	std::cout << list2.RemoveFromEnd() ;
-	std::cout << "\n";
+		std::cout << list2.RemoveFromEnd();
+	if (list2.IsEmpty()) std::cout << std::endl;
+	//std::cout << "\n";
 }
