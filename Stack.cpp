@@ -30,7 +30,7 @@ template<typename T>
 T Stack<T>::Remove()
 {
 	if (IsEmpty()) {
-		return "";
+		return NULL;
 	}
 
 	T val = top->val;

@@ -3,6 +3,8 @@
 #include "Stack.cpp"
 #include "List.h"
 #include <conio.h>
+#include "objet.h"
+#include <sstream>
 void RunStack();
 void RunQueue();
 void RunList();
@@ -32,7 +34,10 @@ int main()
 
 void RunStack() {
 	std::string userInput;
-	Stack<std::string> stack;
+	Stack<int> stack;
+	Stack<std::string> stack1; // Use Stack<std::string> instead of Stack<objet>
+	objet obj;
+	std::string str = obj.display();
 
 	std::cout << "Les items vont etre affiches en LIFO\n";
 	std::cout << "Voici les commandes possibles: \n";
@@ -43,14 +48,17 @@ void RunStack() {
 		std::cin >> userInput;
 		if (userInput == "Exit")
 			break;
-
-		stack.Add(userInput);
+		stack.Add(std::stoi(userInput));
+		stack1.Add(str);
 	}
+
+	//print display
 
 	std::cout << "\n******************\nVoici le resultat!\n******************\n";
 
 	while (!stack.IsEmpty()) {
 		std::cout << "\t" << stack.Remove() << "\n";
+		std::cout << "\t" << stack1.Remove() << "\n";
 	}
 }
 
