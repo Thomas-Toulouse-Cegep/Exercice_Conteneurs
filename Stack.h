@@ -1,17 +1,17 @@
 #pragma once
 #include <string>
-
+template<class T>
 class Stack {
 private:
 	struct StackItem {
-		std::string val;
+		T val;
 		StackItem* next;
 	};
 	StackItem* top;
 public:
 	Stack();
 	~Stack();
-	void Add(std::string text);
-	std::string Remove();
+	void Add(T text);
+	T Remove();
 	bool IsEmpty();
 };

@@ -32,7 +32,7 @@ int main()
 
 void RunStack() {
 	std::string userInput;
-	Stack stack;
+	Stack<std::string> stack;
 
 	std::cout << "Les items vont etre affiches en LIFO\n";
 	std::cout << "Voici les commandes possibles: \n";
@@ -101,6 +101,7 @@ void RunList() {
 
 	while (!list1.IsEmpty())
 		std::cout << list1.RemoveFromStart();
+
 	//std::cout << "\n";
 
 	std::cout << "\n******************\nVoici le resultat de la fin!\n******************\n";
@@ -108,5 +109,6 @@ void RunList() {
 	while (!list2.IsEmpty())
 		std::cout << list2.RemoveFromEnd();
 	if (list2.IsEmpty()) std::cout << std::endl;
+
 	//std::cout << "\n";
 }

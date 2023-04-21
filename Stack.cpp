@@ -1,11 +1,11 @@
 #include "Stack.h"
-
-Stack::Stack()
+template<typename T>
+Stack<T>::Stack()
 {
 	top = nullptr;
 }
-
-Stack::~Stack()
+template<typename T>
+Stack<T>::~Stack()
 {
 	StackItem* temp = top;
 	while (!IsEmpty()) {
@@ -15,8 +15,8 @@ Stack::~Stack()
 	}
 	temp = nullptr;
 }
-
-void Stack::Add(std::string text)
+template<typename T>
+void Stack<T>::Add(T text)
 {
 	StackItem* newItem = new StackItem;
 	newItem->val = text;
@@ -25,24 +25,24 @@ void Stack::Add(std::string text)
 	top = newItem;
 	newItem = nullptr;
 }
-
-std::string Stack::Remove()
+template<typename T>
+T Stack<T>::Remove()
 {
 	if (IsEmpty()) {
 		return "";
 	}
 
-	std::string value = top->val;
+	T val = top->val;
 
 	StackItem* temp = top;
 	top = top->next;
 	delete temp;
 	temp = nullptr;
 
-	return value;
+	return T val;
 }
-
-bool Stack::IsEmpty()
+template<typename T>
+bool  Stack<T>::IsEmpty()
 {
 	return top == nullptr;
 }
