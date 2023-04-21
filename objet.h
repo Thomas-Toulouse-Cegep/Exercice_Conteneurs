@@ -5,6 +5,9 @@ class objet
 {
 public:
 	objet();
+	objet(std::string value);
 
 	std::string  display();
+private:
+	std::string value;
 };

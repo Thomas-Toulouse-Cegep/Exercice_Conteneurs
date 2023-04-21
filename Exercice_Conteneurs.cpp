@@ -35,10 +35,14 @@ int main()
 void RunStack() {
 	std::string userInput;
 	Stack<int> stack;
-	Stack<std::string> stack1; // Use Stack<std::string> instead of Stack<objet>
+	Stack<objet> stack1;
 	objet obj;
 	std::string str = obj.display();
 
+	//objet obj(str);
+
+	stack1.Add(obj);
+	std::cout << stack1.Remove().display() << std::endl;
 	std::cout << "Les items vont etre affiches en LIFO\n";
 	std::cout << "Voici les commandes possibles: \n";
 	std::cout << "\t[item a ajouter]\n";
@@ -49,7 +53,13 @@ void RunStack() {
 		if (userInput == "Exit")
 			break;
 		stack.Add(std::stoi(userInput));
-		stack1.Add(str);
+		std::string str = "some value";
+
+		objet obj(str);
+
+		//objet obj;
+		//obj = objet(obj.display());
+		stack1.Add(obj);
 	}
 
 	//print display
@@ -58,7 +68,8 @@ void RunStack() {
 
 	while (!stack.IsEmpty()) {
 		std::cout << "\t" << stack.Remove() << "\n";
-		std::cout << "\t" << stack1.Remove() << "\n";
+
+		std::cout << "\t" << stack1.Remove().display() << "\n";
 	}
 }
 
