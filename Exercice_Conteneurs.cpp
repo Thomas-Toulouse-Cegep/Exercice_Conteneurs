@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Queue.h"
-#include "Stack.h"
+#include "Stack.cpp"
 #include "List.h"
 #include <conio.h>
 void RunStack();
@@ -44,7 +44,6 @@ void RunStack() {
 		if (userInput == "Exit")
 			break;
 
-		/*	if (GetKeyState('q') & 0x8000*/
 		stack.Add(userInput);
 	}
 

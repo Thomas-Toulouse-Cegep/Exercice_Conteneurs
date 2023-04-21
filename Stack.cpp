@@ -26,6 +26,7 @@ void Stack<T>::Add(T text)
 	newItem = nullptr;
 }
 template<typename T>
+
 T Stack<T>::Remove()
 {
 	if (IsEmpty()) {
@@ -39,7 +40,7 @@ T Stack<T>::Remove()
 	delete temp;
 	temp = nullptr;
 
-	return T val;
+	return val;
 }
 template<typename T>
 bool  Stack<T>::IsEmpty()
