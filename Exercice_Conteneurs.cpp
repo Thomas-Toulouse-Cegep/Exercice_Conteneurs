@@ -5,16 +5,20 @@
 #include <conio.h>
 #include "objet.h"
 #include <sstream>
+#include <algorithm>
+#include <search.h>
+int main();
 void RunStack();
 void RunQueue();
 void RunList();
+void RunVec();
 
 int main()
 {
 	std::string userInput;
 
 	std::cout << "Bienvenue! Veuillez choisir parmis les options suivantes: \n";
-	std::cout << "\tPile\n\tFile\n\tListe\n";
+	std::cout << "\tPile\n\tFile\n\tListe\n\tVecteur\n";
 	std::cin >> userInput;
 
 	if (userInput == "Pile" || userInput == "pile") {
@@ -25,6 +29,9 @@ int main()
 	}
 	else if (userInput == "Liste" || userInput == "liste") {
 		RunList();
+	}
+	else if (userInput == "vecteur" || userInput == "Vecteur") {
+		RunVec();
 	}
 	else {
 		std::cout << "Desole, cette commande n'est pas supportee!\n";
@@ -52,14 +59,23 @@ void RunStack() {
 		std::cin >> userInput;
 		if (userInput == "Exit")
 			break;
-		stack.Add(std::stoi(userInput));
-		std::string str = "some value";
 
+		//stack.Add(std::stoi(userInput));
+		stack += std::stoi(userInput);
+		std::string str = "test";
+		std::string str1 = "allo";
 		objet obj(str);
+		objet obj1(str1);
+
+		;
 
 		//objet obj;
 		//obj = objet(obj.display());
-		stack1.Add(obj);
+		//stack1.Add(obj);
+		stack1 += obj;
+		bool i = obj1 == obj;
+
+		//obj == str;
 	}
 
 	//print display
@@ -67,16 +83,19 @@ void RunStack() {
 	std::cout << "\n******************\nVoici le resultat!\n******************\n";
 
 	while (!stack.IsEmpty()) {
-		std::cout << "\t" << stack.Remove() << "\n";
+		std::cout << "\t" << --stack << "\n";
 
-		std::cout << "\t" << stack1.Remove().display() << "\n";
+		std::cout << "\t" << (--stack1).display() << "\n";
 	}
 }
 
 void RunQueue() {
 	std::string userInput;
 	Queue queue;
-
+	queue.Add("a");
+	queue.Add("b");
+	queue.Add("c");
+	queue.Add("d");
 	std::cout << "Les items vont etre affiches en FIFO\n";
 	std::cout << "Voici les commandes possibles: \n";
 	std::cout << "\t[item a ajouter]\n";
@@ -85,18 +104,54 @@ void RunQueue() {
 	while (true) {
 		std::cin >> userInput;
 		if (userInput == "Exit" || userInput == "exit")
-			break;
+			queue += userInput;
 
-		queue.Add(userInput);
+		break;
+	}
+
+	// search queue for userinput
+
+	int index = queue.Find(userInput);
+	if (index != -1) {
+		std::cout << "L'element '" << userInput << "' a ete trouve a l'index " << index << std::endl;
+	}
+	else {
+		std::cout << "L'element '" << userInput << "' n'a pas ete trouve dans la queue." << std::endl;
 	}
 
 	std::cout << "\n******************\nVoici le resultat!\n******************\n";
 
 	while (!queue.IsEmpty()) {
-		std::cout << "\t" << queue.Remove() << "\n";
+		std::cout << "\t" << --queue << "\n";
 	}
 }
 
+void RunVec() {
+	std::cout << "Les items vont etre affiches en ordre alphabetique \n";
+	std::cout << "Voici les commandes possibles: \n";
+	std::cout << "\t[item a ajouter]\n";
+	std::cout << "\tExit\n";
+
+	std::vector<objet> objets = { objet("B"), objet("A"), objet("C") };
+
+	std::string userInput;
+	while (true) {
+		std::cin >> userInput;
+		if (userInput == "Exit" || userInput == "exit")
+			break;
+		objets.push_back(objet(userInput));
+	}
+
+	std::sort(objets.begin(), objets.end());
+	for (int i = 0; i < objets.size(); i++) {
+		bool ii = objets[i] == objets[i];
+
+		// use of < overloaded operator
+		bool iii = objets[i] < objets[1];
+
+		std::cout << objets[i].display() << " " << ii << " " << iii << std::endl;
+	}
+}
 void RunList() {
 	std::string userInput;
 	List list1, list2;
@@ -111,14 +166,14 @@ void RunList() {
 		if (userInput == "Exit")
 			break;
 
-		list1.Add(userInput);
-		list2.Add(userInput);
+		list1 += userInput;
+		list2 += userInput;
 	}
 
 	std::cout << "\n******************\nVoici le resultat de debut!\n******************\n";
 
 	while (!list1.IsEmpty())
-		std::cout << list1.RemoveFromStart();
+		std::cout << --list1;
 
 	//std::cout << "\n";
 

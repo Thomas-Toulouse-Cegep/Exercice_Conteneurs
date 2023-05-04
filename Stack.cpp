@@ -25,8 +25,8 @@ void Stack<T>::Add(T text)
 	top = newItem;
 	newItem = nullptr;
 }
-template<typename T>
 
+template<typename T>
 T Stack<T>::Remove()
 {
 	if (IsEmpty()) {

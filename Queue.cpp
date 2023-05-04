@@ -19,7 +19,7 @@ Queue::~Queue()
 void Queue::Add(std::string text)
 {
 	QueueItem* newitem = new QueueItem;
-	newitem->val = text;
+	newitem->val += text;
 	newitem->next = nullptr;
 
 	if (!IsEmpty())
@@ -49,4 +49,17 @@ std::string Queue::Remove()
 bool Queue::IsEmpty()
 {
 	return start == nullptr;
+}
+int Queue::Find(std::string text) const
+{
+	int index = 0;
+	QueueItem* current = start;
+	while (current != nullptr) {
+		if (current->val == text) {
+			return index;
+		}
+		current = current->next;
+		index++;
+	}
+	return -1;
 }

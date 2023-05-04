@@ -15,8 +15,17 @@ public:
 	List();
 	~List();
 	void Add(std::string text);
+	void operator += (std::string text) {
+		Add(text);
+	}
+	std::string Remove();
+
 	std::string RemoveFromStart();
+	std::string operator -- () {
+		return RemoveFromStart();
+	}
 	std::string RemoveFromEnd();
+
 	bool IsEmpty();
 	bool IsEmptyend();
 };

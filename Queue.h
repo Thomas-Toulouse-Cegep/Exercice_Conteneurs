@@ -12,7 +12,14 @@ private:
 public:
 	Queue();
 	~Queue();
-	void Add(std::string text);
+	void  Add(std::string text);
+	void operator += (std::string text) {
+		Add(text);
+	}
 	std::string Remove();
+	std::string  operator -- () {
+		return Remove();
+	}
 	bool IsEmpty();
+	int Find(std::string text) const;
 };

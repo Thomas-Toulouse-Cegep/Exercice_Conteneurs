@@ -12,6 +12,12 @@ public:
 	Stack();
 	~Stack();
 	void Add(T text);
+	void operator += (T text) {
+		Add(text);
+	}
+	T operator -- () {
+		return Remove();
+	}
 	T Remove();
 	bool IsEmpty();
 };

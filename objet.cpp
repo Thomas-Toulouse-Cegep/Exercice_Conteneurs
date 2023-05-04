@@ -1,11 +1,12 @@
 #include "objet.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 // constructor
 objet::objet()
 {
-	this->value = "test";
+	this->value = "";
 }
 objet::objet(std::string value)
 {
